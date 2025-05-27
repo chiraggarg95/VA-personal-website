@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore Alex Morgan's product management portfolio featuring key projects and case studies.">
-    <title>Projects | Alex Morgan - Product Manager</title>
+    <meta name="description" content="Explore Vaishnavi G Agarwal's engineering projects including aerospace systems, satellite technology, and mechanical design innovations.">
+    <title>Projects | Vaishnavi G Agarwal</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
-        <div class="logo">AM</div>
+        <div class="logo">VA</div>
         <nav id="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -21,18 +21,24 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-        <div class="mobile-toggle">
+        <div class="mobile-toggle" aria-label="Toggle navigation menu">
             <span></span>
             <span></span>
             <span></span>
+        </div>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider"></div>
+            </label>
         </div>
     </header>
 
     <main>
         <section class="page-header">
             <div class="container">
-                <h1>Projects</h1>
-                <p>A showcase of my product management work across various industries</p>
+                <h1>Engineering Projects</h1>
+                <p>A showcase of my work across aerospace systems, mechanical design, and innovative engineering solutions</p>
             </div>
         </section>
 
@@ -40,206 +46,336 @@
             <div class="container">
                 <div class="filter-tabs">
                     <button class="filter-btn active" data-filter="all">All Projects</button>
-                    <button class="filter-btn" data-filter="fintech">FinTech</button>
-                    <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-                    <button class="filter-btn" data-filter="enterprise">Enterprise</button>
-                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="aerospace">Aerospace</button>
+                    <button class="filter-btn" data-filter="mechanical">Mechanical Design</button>
+                    <button class="filter-btn" data-filter="software">Software</button>
+                    <button class="filter-btn" data-filter="research">Research</button>
                 </div>
 
                 <div class="projects-grid">
-                    <div class="project-card" id="project1">
+                    <!-- STADS Project -->
+                    <div class="project-card" data-category="aerospace" id="stads">
                         <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="Enterprise Analytics Dashboard">
+                            <img src="/api/placeholder/800/500" alt="Star Tracker-based Attitude Determination System">
                         </div>
                         <div class="project-info">
-                            <h2>Enterprise Analytics Dashboard</h2>
-                            <p class="project-summary">Redesigned data visualization platform increasing user engagement by 43% and reducing decision-making time by 2.5x</p>
+                            <h2>Star Tracker-based Attitude Determination System (STADS)</h2>
+                            <p class="project-summary">Led the mechanical subsystem design for a CubeSat-compatible star tracker system, optimizing for size reduction while ensuring structural integrity and precision pointing accuracy.</p>
                             <div class="tags">
-                                <span>UX Research</span>
+                                <span>Aerospace Engineering</span>
+                                <span>Mechanical Design</span>
+                                <span>CubeSat Systems</span>
+                                <span>Structural Analysis</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Project Overview</h3>
+                                    <p>As part of IIT Bombay's Student Satellite Program, I spearheaded the mechanical design of the Star Tracker-based Attitude Determination System. This critical component enables precise spacecraft orientation control for mission-critical operations.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Key Contributions</h3>
+                                    <ul>
+                                        <li>Designed CubeSat-compatible mechanical structure with 40% size reduction</li>
+                                        <li>Developed PCB implementation strategy for optimal space utilization</li>
+                                        <li>Performed structural analysis ensuring survival during launch conditions</li>
+                                        <li>Collaborated with electrical team for seamless integration</li>
+                                        <li>Created detailed assembly drawings and manufacturing specifications</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technical Achievements</h3>
+                                    <p>Successfully designed a robust mechanical system that meets stringent space-grade requirements while maintaining compatibility with standard CubeSat form factors. The design achieved optimal mass distribution and thermal management.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Impact & Recognition</h3>
+                                    <p>This project contributed to IIT Bombay's ongoing satellite missions and provided valuable experience in space systems engineering. The design principles developed are being applied to future satellite projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3D Printing Resin Vat Project -->
+                    <div class="project-card" data-category="mechanical research" id="resin-vat">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="3D Printing Resin Vat Design">
+                        </div>
+                        <div class="project-info">
+                            <h2>High-Speed SLA 3D Printer Resin Vat System</h2>
+                            <p class="project-summary">Designed and optimized an innovative resin vat system for high-speed SLA 3D printing, solving critical challenges in beam intensity uniformity and material flow dynamics.</p>
+                            <div class="tags">
+                                <span>3D Printing</span>
+                                <span>SOLIDWORKS</span>
+                                <span>Manufacturing</span>
+                                <span>Fluid Dynamics</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Project Challenge</h3>
+                                    <p>High-speed micro-SLA 3D printing faced significant challenges with uneven laser intensity distribution and resin leakage, limiting print quality and production efficiency. Traditional vat designs couldn't handle the increased processing speeds.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Innovation & Design</h3>
+                                    <ul>
+                                        <li>Designed 15+ resin-vat-tank components using SOLIDWORKS</li>
+                                        <li>Integrated 3-point leveling system for uniform laser intensity</li>
+                                        <li>Implemented PTFE O-ring sealing to prevent resin leakage</li>
+                                        <li>Optimized resin flow patterns for consistent material distribution</li>
+                                        <li>Created modular design for easy maintenance and replacement</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technical Solutions</h3>
+                                    <p>The innovative design addressed beam intensity variations through precision-engineered leveling mechanisms while the advanced sealing system eliminated material waste. The modular approach enabled rapid prototyping and testing iterations.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Results & Impact</h3>
+                                    <p>Achieved 90% improvement in beam intensity uniformity and eliminated resin leakage issues. The design enables consistent high-quality prints at increased processing speeds, contributing to more efficient additive manufacturing workflows.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Morse to Speech App -->
+                    <div class="project-card" data-category="software" id="morse-speech">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="Morse to Synthesized Speech Application">
+                        </div>
+                        <div class="project-info">
+                            <h2>Morse to Synthesized Speech Application</h2>
+                            <p class="project-summary">Developed an accessible web application that converts morse code input to synthesized speech, empowering aphonic individuals with an innovative communication tool.</p>
+                            <div class="tags">
+                                <span>Python</span>
+                                <span>Flask</span>
+                                <span>Accessibility</span>
+                                <span>Speech Synthesis</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Social Impact Mission</h3>
+                                    <p>This project addresses the communication challenges faced by aphonic individuals by providing an intuitive, technology-based solution that converts simple morse code inputs into clear synthesized speech.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technical Implementation</h3>
+                                    <ul>
+                                        <li>Developed Flask web application with responsive user interface</li>
+                                        <li>Implemented space-bar morse code input system for accessibility</li>
+                                        <li>Created 3-phase Text-to-Speech (TTS) pipeline for natural speech synthesis</li>
+                                        <li>Integrated real-time morse code translation algorithms</li>
+                                        <li>Designed user-friendly interface for individuals with limited mobility</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>User-Centered Design</h3>
+                                    <p>The application prioritizes ease of use with large, accessible buttons, clear visual feedback, and customizable speech parameters. The morse code system requires only simple space-bar interactions, making it accessible to users with varying physical capabilities.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technology Stack & Features</h3>
+                                    <p>Built using Python Flask framework with advanced speech synthesis libraries. Features include adjustable speech speed, volume control, custom voice selection, and morse code pattern visualization for learning and verification.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Harmonic Drive Analysis -->
+                    <div class="project-card" data-category="mechanical research" id="harmonic-drive">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="Harmonic Drive Kinematic Analysis">
+                        </div>
+                        <div class="project-info">
+                            <h2>Kinematic Modeling & Analysis of Harmonic Drives</h2>
+                            <p class="project-summary">Bachelor's thesis project developing comprehensive MATLAB models for harmonic drive analysis, comparing wave-generator profiles and synthesizing optimized tooth configurations.</p>
+                            <div class="tags">
+                                <span>MATLAB</span>
+                                <span>Mechanical Analysis</span>
+                                <span>Kinematic Modeling</span>
+                                <span>Gear Design</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Research Objective</h3>
+                                    <p>This thesis project aimed to develop advanced computational models for harmonic drive systems, focusing on optimizing gear tooth profiles and analyzing the kinematic behavior of flexspline and circular-spline interactions.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technical Methodology</h3>
+                                    <ul>
+                                        <li>Developed comprehensive MATLAB code for flexspline/circular-spline motion modeling</li>
+                                        <li>Implemented comparative analysis algorithms for various wave-generator profiles</li>
+                                        <li>Created tooth profile synthesis tools for conjugate gear designs</li>
+                                        <li>Performed kinematic analysis of complex gear interactions</li>
+                                        <li>Validated models against theoretical and experimental data</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Key Innovations</h3>
+                                    <p>Developed novel approaches to wave-generator profile optimization that improved transmission efficiency and reduced mechanical stress. The conjugate tooth profile synthesis method enables custom gear designs for specific applications.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Academic Achievement</h3>
+                                    <p>Received 9/10 grade for this bachelor's thesis project. The research contributes to the field of precision gear design and has applications in robotics, aerospace, and precision machinery where high reduction ratios are required.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Wire Fin Heat Exchanger -->
+                    <div class="project-card" data-category="mechanical research" id="heat-exchanger">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="Wire Fin Heat Exchanger Design">
+                        </div>
+                        <div class="project-info">
+                            <h2>Wire Fin Heat Exchanger Design & Optimization</h2>
+                            <p class="project-summary">Comprehensive analysis and design optimization of novel wire fin heat exchangers, focusing on heat transfer enhancement and economic viability for industrial applications.</p>
+                            <div class="tags">
+                                <span>Heat Transfer</span>
+                                <span>Thermal Analysis</span>
+                                <span>Design Optimization</span>
+                                <span>Economic Analysis</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Engineering Challenge</h3>
+                                    <p>Traditional heat exchanger designs face limitations in heat transfer efficiency and manufacturing costs. This project explored innovative wire fin configurations to achieve superior thermal performance while maintaining economic viability.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Research Approach</h3>
+                                    <ul>
+                                        <li>Conducted comprehensive heat transfer analysis across multiple scenarios</li>
+                                        <li>Developed thermal performance optimization algorithms</li>
+                                        <li>Performed economic analysis comparing various design configurations</li>
+                                        <li>Created detailed manufacturing feasibility studies</li>
+                                        <li>Validated designs through computational fluid dynamics modeling</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Design Innovation</h3>
+                                    <p>The novel wire fin configuration achieves enhanced heat transfer through optimized surface area distribution and improved fluid flow patterns. The design balances thermal performance with manufacturing complexity and material costs.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Industrial Applications</h3>
+                                    <p>The optimized heat exchanger design has applications in HVAC systems, automotive cooling, and industrial process heat recovery. The economic analysis demonstrates significant cost savings compared to conventional designs while improving thermal efficiency.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Airline Revenue Optimization -->
+                    <div class="project-card" data-category="software research" id="airline-optimization">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="Airline Revenue Optimization Model">
+                        </div>
+                        <div class="project-info">
+                            <h2>Airline Revenue Optimization System</h2>
+                            <p class="project-summary">Led a team of 4 engineers to develop comprehensive airline pricing models using AMPL and Python, analyzing 7 optimization schemes across multiple parameters to benchmark industry strategies.</p>
+                            <div class="tags">
+                                <span>Operations Research</span>
+                                <span>Python</span>
+                                <span>AMPL</span>
+                                <span>Team Leadership</span>
+                            </div>
+                            <div class="project-details">
+                                <div class="detail-item">
+                                    <h3>Project Leadership</h3>
+                                    <p>As team leader, I coordinated a multidisciplinary group of 4 engineers to tackle the complex challenge of airline revenue optimization. The project required balancing multiple competing objectives while meeting strict computational constraints.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Technical Implementation</h3>
+                                    <ul>
+                                        <li>Built sophisticated AMPL optimization models for pricing strategies</li>
+                                        <li>Developed Python simulation frameworks for scenario analysis</li>
+                                        <li>Implemented 7 distinct pricing schemes with comparative analysis</li>
+                                        <li>Analyzed performance across 5+ key parameters and constraints</li>
+                                        <li>Created benchmarking tools for existing airline strategies</li>
+                                    </ul>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Optimization Strategies</h3>
+                                    <p>The models incorporated dynamic pricing, demand forecasting, capacity constraints, and competitive market analysis. Multiple optimization algorithms were tested to identify the most effective approaches for different market conditions.</p>
+                                </div>
+                                <div class="detail-item">
+                                    <h3>Industry Impact</h3>
+                                    <p>The optimization models demonstrated potential revenue improvements of 15-20% compared to traditional pricing strategies. The benchmarking analysis provided insights into best practices across the airline industry, with applications for both major carriers and low-cost airlines.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FTLE & LCS Research -->
+                    <div class="project-card" data-category="research software" id="fluid-dynamics">
+                        <div class="project-image">
+                            <img src="/api/placeholder/800/500" alt="Fluid Dynamics Visualization">
+                        </div>
+                        <div class="project-info">
+                            <h2>Finite-Time Lyapunov Exponents & Lagrangian Coherent Structures</h2>
+                            <p class="project-summary">Advanced research internship at University of Colorado Boulder analyzing complex fluid flow systems through FTLE computation and coherent structure visualization.</p>
+                            <div class="tags">
+                                <span>Fluid Dynamics</span>
+                                <span>Python</span>
                                 <span>Data Visualization</span>
-                                <span>Enterprise</span>
+                                <span>Computational Analysis</span>
                             </div>
                             <div class="project-details">
                                 <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Legacy analytics platform suffered from poor usability, resulting in low adoption rates and limited business impact despite robust data collection.</p>
+                                    <h3>Research Context</h3>
+                                    <p>This international research internship focused on advanced computational fluid dynamics techniques, specifically analyzing time-dependent 2D fluid-flow systems to understand complex flow patterns and structures.</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Led end-to-end product development from discovery through launch, including stakeholder management, user research, and cross-functional coordination.</p>
+                                    <h3>Technical Contributions</h3>
+                                    <ul>
+                                        <li>Analyzed deformation gradients to compute FTLE velocity fields</li>
+                                        <li>Developed algorithms for time-dependent 2D fluid-flow systems</li>
+                                        <li>Enhanced existing Python scripts for improved computational efficiency</li>
+                                        <li>Generated advanced coherent-structure visualizations</li>
+                                        <li>Validated results against theoretical fluid dynamics models</li>
+                                    </ul>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Conducted extensive user interviews to identify pain points, collaborated with design on information architecture improvements, and implemented an agile delivery process with bi-weekly releases.</p>
+                                    <h3>Computational Innovation</h3>
+                                    <p>Improved existing Python visualization tools by optimizing algorithms and enhancing graphical output quality. The enhanced scripts provide clearer insights into complex fluid behavior and coherent structure formation.</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>43% increase in user engagement, 2.5x reduction in time-to-insight, and $2.8M in attributed revenue impact through improved decision-making capabilities.</p>
+                                    <h3>Research Applications</h3>
+                                    <p>The FTLE and LCS analysis techniques have applications in atmospheric science, oceanography, and engineering fluid systems. The research contributes to better understanding of mixing processes and transport phenomena in complex flows.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="project-card" id="project2">
+                    <!-- MEP Construction Analysis -->
+                    <div class="project-card" data-category="mechanical" id="mep-analysis">
                         <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="Mobile Payment Solution">
+                            <img src="/api/placeholder/800/500" alt="MEP Systems Analysis">
                         </div>
                         <div class="project-info">
-                            <h2>Mobile Payment Solution</h2>
-                            <p class="project-summary">Led end-to-end development of fintech application with 500k+ active users and $1.2B in processed transactions</p>
+                            <h2>MEP Systems Productivity Analysis & Optimization</h2>
+                            <p class="project-summary">Comprehensive productivity audit and quantitative analysis of mechanical, electrical, and plumbing systems for large-scale hotel construction project at Taj-Ginger Mumbai.</p>
                             <div class="tags">
-                                <span>FinTech</span>
-                                <span>Mobile</span>
-                                <span>Payment Processing</span>
+                                <span>Construction Management</span>
+                                <span>Productivity Analysis</span>
+                                <span>MEP Systems</span>
+                                <span>Project Management</span>
                             </div>
                             <div class="project-details">
                                 <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Creating a secure, intuitive payment solution for emerging markets with complex regulatory requirements and varying levels of financial literacy.</p>
+                                    <h3>Project Scope</h3>
+                                    <p>As Executive Trainee at TATA Projects, I conducted a comprehensive 20-day productivity audit for mechanical, electrical, and plumbing (MEP) tasks in a luxury hotel construction project, analyzing efficiency across 350+ rooms.</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Product lead responsible for strategy, roadmap development, and go-to-market planning alongside compliance and security considerations.</p>
+                                    <h3>Analytical Approach</h3>
+                                    <ul>
+                                        <li>Performed detailed productivity audit for MEP tasks in hotel mock-up room</li>
+                                        <li>Executed quantitative take-off for 250+ MEP materials and components</li>
+                                        <li>Analyzed firefighting system installations across 350+ rooms</li>
+                                        <li>Utilized construction drawings for accurate material and labor estimation</li>
+                                        <li>Developed optimization recommendations based on empirical data</li>
+                                    </ul>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Implemented user-centered design process with extensive field testing, progressive feature rollout strategy, and continuous feedback loops for rapid iteration.</p>
+                                    <h3>Construction Insights</h3>
+                                    <p>The analysis revealed significant opportunities for process optimization and material efficiency improvements. Systematic evaluation of MEP installation procedures identified bottlenecks and proposed solutions for enhanced productivity.</p>
                                 </div>
                                 <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>Scaled to 500k+ active users within 18 months, processed over $1.2B in transactions, and established product as market leader with 34% share in target regions.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card" id="project3">
-                        <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="Healthcare Workflow Platform">
-                        </div>
-                        <div class="project-info">
-                            <h2>Healthcare Workflow Platform</h2>
-                            <p class="project-summary">Reimagined clinical care coordination system reducing administrative overhead by 32% and improving patient outcomes</p>
-                            <div class="tags">
-                                <span>Healthcare</span>
-                                <span>Workflow Optimization</span>
-                                <span>Clinical</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Healthcare providers struggled with fragmented systems leading to inefficient care coordination, documentation burdens, and potential safety issues.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Product manager overseeing integration strategy, feature prioritization, and stakeholder alignment across clinical, technical, and business teams.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Conducted clinical shadowing to identify workflow bottlenecks, developed integration architecture with legacy systems, and implemented modular design for customization.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>32% reduction in administrative tasks, 28% improvement in care plan adherence, and successful deployment across 18 facilities impacting over 200,000 patient encounters annually.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card" id="project4">
-                        <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="E-Commerce Personalization Engine">
-                        </div>
-                        <div class="project-info">
-                            <h2>E-Commerce Personalization Engine</h2>
-                            <p class="project-summary">Developed AI-powered recommendation system driving 24% conversion increase and 18% higher average order value</p>
-                            <div class="tags">
-                                <span>E-Commerce</span>
-                                <span>AI/ML</span>
-                                <span>Personalization</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Retail platform needed to improve conversion rates and customer loyalty in highly competitive market with rising customer acquisition costs.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Led product strategy and execution for personalization initiative, working closely with data science and engineering teams to operationalize ML models.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Prioritized customer segments for initial deployment, coordinated development of recommendation algorithms, and implemented A/B testing framework for continuous optimization.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>24% increase in conversion rate, 18% higher average order value, and 37% improvement in customer retention metrics over 12-month period.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card" id="project5">
-                        <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="Enterprise Communication Platform">
-                        </div>
-                        <div class="project-info">
-                            <h2>Enterprise Communication Platform</h2>
-                            <p class="project-summary">Revolutionized internal collaboration with secure messaging system improving team productivity by 27%</p>
-                            <div class="tags">
-                                <span>Enterprise</span>
-                                <span>Communication</span>
-                                <span>Security</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Global enterprise needed unified, secure communications platform that integrated with existing systems while meeting stringent compliance requirements.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Managed product development from conception through enterprise-wide rollout, balancing security needs with user experience considerations.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Created security-first architecture with IT security team, implemented phased deployment strategy, and developed comprehensive adoption program with change management support.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>27% improvement in team productivity, successful deployment to 12,000+ employees across 28 countries, and full compliance with industry security standards.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card" id="project6">
-                        <div class="project-image">
-                            <img src="/api/placeholder/800/500" alt="Wealth Management Platform">
-                        </div>
-                        <div class="project-info">
-                            <h2>Wealth Management Platform</h2>
-                            <p class="project-summary">Transformed investment advisory services with digital platform resulting in 52% client base growth</p>
-                            <div class="tags">
-                                <span>FinTech</span>
-                                <span>Investment</span>
-                                <span>Advisory</span>
-                            </div>
-                            <div class="project-details">
-                                <div class="detail-item">
-                                    <h3>The Challenge</h3>
-                                    <p>Traditional wealth management firm needed digital transformation to attract younger clients and scale advisory services beyond high-net-worth individuals.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>My Role</h3>
-                                    <p>Product lead responsible for vision, strategy, and execution of digital platform, working at intersection of traditional finance and modern technology.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Approach & Execution</h3>
-                                    <p>Conducted competitive analysis and client research, prioritized hybrid human-digital service model, and implemented agile development with quarterly release cadence.</p>
-                                </div>
-                                <div class="detail-item">
-                                    <h3>Outcomes</h3>
-                                    <p>52% client base growth in 24 months, reduced minimum portfolio requirement by 60% while maintaining profitability, and increased advisor efficiency by 3.2x.</p>
+                                    <h3>Industry Impact</h3>
+                                    <p>The productivity analysis provided valuable insights for large-scale construction project management. Recommendations included workflow optimization, resource allocation improvements, and standardized installation procedures that could be applied to similar hospitality projects.</p>
                                 </div>
                             </div>
                         </div>
@@ -250,9 +386,12 @@
 
         <section class="cta-section">
             <div class="container">
-                <h2>Interested in Working Together?</h2>
-                <p>I'm always open to discussing new product challenges and opportunities.</p>
-                <a href="contact.html" class="btn primary">Get In Touch</a>
+                <h2>Interested in Collaborating?</h2>
+                <p>I'm always excited to work on challenging engineering projects that push the boundaries of innovation and create meaningful impact.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn primary">Get In Touch</a>
+                    <a href="resume.html" class="btn secondary">View My Experience</a>
+                </div>
             </div>
         </section>
     </main>
@@ -260,7 +399,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div class="footer-logo">AM</div>
+                <div class="footer-logo">VA</div>
                 <div class="footer-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
@@ -275,10 +414,11 @@
                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Medium"><i class="fab fa-medium-m"></i></a>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Alex Morgan. All rights reserved.</p>
+                <p>&copy; 2025 Vaishnavi G Agarwal. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -302,6 +442,8 @@
 
         // Project filtering
         const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
                 // Remove active class from all buttons
@@ -309,12 +451,41 @@
                 // Add active class to clicked button
                 this.classList.add('active');
                 
-                // Simple filter implementation (would be connected to actual data in a real implementation)
                 const filter = this.getAttribute('data-filter');
-                console.log(`Filter selected: ${filter}`);
-                // Additional filtering logic would go here
+                
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.style.display = 'grid';
+                        card.classList.add('fadeIn');
+                    } else {
+                        const categories = card.getAttribute('data-category');
+                        if (categories && categories.includes(filter)) {
+                            card.style.display = 'grid';
+                            card.classList.add('fadeIn');
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.remove('fadeIn');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Add entrance animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.project-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
             });
         });
     </script>
+    <script src="darkmode.js"></script>
 </body>
 </html>
