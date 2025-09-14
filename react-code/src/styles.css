@@ -2918,7 +2918,7 @@ footer {
   flex-direction: column;
   gap: 16px;
   align-items: center;
-}
+  }
 .testimonials-viewport {
   width: 100%;
   overflow: hidden;
@@ -2975,6 +2975,30 @@ footer {
 @media (min-width: 1024px) {
   .testimonial-card { max-width: 920px; }
 }
+
+/* Testimonials: new card pattern */
+.t-card { padding: 24px; border-radius: 16px; border: 1px solid var(--border-100, var(--mid-gray)); background: var(--surface, var(--card-bg)); box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+.t-quote { margin: 0 0 12px; font-size: 1.05rem; line-height: 1.6; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.t-readfull { background: none; border: none; color: var(--primary-color); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; margin-bottom: 8px; }
+.t-authorrow { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 12px; margin-top: 6px; }
+.t-avatar { width: 48px; height: 48px; border-radius: 999px; object-fit: cover; background: var(--light-gray); display: block; }
+.t-avatar--fallback { display: grid; place-items: center; font-weight: 700; color: var(--primary-color); }
+.t-authorname { font-weight: 700; }
+.t-authorrole { color: var(--dark-gray); font-size: .95rem; }
+.t-orglogo { width: 24px; height: 24px; object-fit: contain; opacity: .85; }
+.t-arrows { position: relative; width: 100%; max-width: 920px; }
+.t-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: var(--surface, var(--card-bg)); border: 1px solid var(--border-100, var(--mid-gray)); border-radius: 999px; width: 36px; height: 36px; box-shadow: 0 2px 10px rgba(0,0,0,.06); }
+.t-arrow--prev { left: -8px; }
+.t-arrow--next { right: -8px; }
+@media (max-width: 640px) { .t-arrows { display: none; } }
+.t-toggle { align-self: center; background: none; border: 1px solid var(--border-100, var(--mid-gray)); border-radius: 999px; padding: 6px 10px; font-size: .9rem; }
+
+/* Modal */
+.t-modal { position: fixed; inset: 0; background: rgba(0,0,0,.4); display: grid; place-items: center; z-index: 10000; }
+.t-modal__content { background: var(--surface, var(--card-bg)); border-radius: 12px; padding: 20px; width: min(720px, 92vw); box-shadow: 0 10px 40px rgba(0,0,0,.2); position: relative; }
+.t-modal__close { position: absolute; top: 8px; right: 10px; border: none; background: none; font-size: 1.4rem; cursor: pointer; }
+.t-modal__quote { font-size: 1.05rem; line-height: 1.7; margin: 0; }
+.t-modal__author { margin-top: 8px; color: var(--dark-gray); }
 
 /* ===== CORE COMPETENCIES (Home) ===== */
 .skills-competencies {

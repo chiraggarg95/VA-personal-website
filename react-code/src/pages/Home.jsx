@@ -12,7 +12,7 @@ import ExperienceCards from "../components/ExperienceCards";
 import SkillsSection from "../components/skills/SkillsSection";
 import CertificationsGrid from "../components/CertificationsGrid";
 import Footer from "../components/layout/Footer";
-import TestimonialsCarousel, { testimonials } from "../components/home/TestimonialsCarousel";
+import TestimonialsSection from "../components/testimonials/TestimonialsSection";
 import useIntersectionFade from "../hooks/useIntersectionFade";
 import useParallax from "../hooks/useParallax";
 import Section from "../components/layout/Section";
@@ -96,12 +96,7 @@ function Home() {
         <SkillsSection />
 
         {/* Testimonials Section */}
-        <Section className="testimonials">
-          <div className="container">
-            <h2>What Colleagues Say</h2>
-            <TestimonialsCarousel testimonials={testimonials} />
-          </div>
-        </Section>
+        <TestimonialsSection />
 
         {/* Education Section */}
         <Section className="education-section">
