@@ -2764,15 +2764,15 @@ footer {
 /* ===== GLOBAL CARD GRIDS: 4-UP DESKTOP + CENTERED ===== */
 @media (min-width: 1200px) {
   /* Projects page */
-  .projects-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; justify-content: center; }
+  .projects-grid { display: grid; grid-template-columns: repeat(var(--grid-cols, 4), minmax(0, 1fr)); gap: var(--grid-gap, 24px); justify-content: center; }
   /* About experience cards */
-  .exp-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; justify-content: center; }
+  .exp-grid { display: grid; grid-template-columns: repeat(var(--grid-cols, 4), minmax(0, 1fr)); gap: var(--grid-gap, 24px); justify-content: center; }
   /* Certifications lists */
-  .certifications-grid, .certification-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; justify-content: center; }
+  .certifications-grid, .certification-cards { display: grid; grid-template-columns: repeat(var(--grid-cols, 4), minmax(0, 1fr)); gap: var(--grid-gap, 24px); justify-content: center; }
   /* About flip skill cards */
-  .skills-card-grid { display: grid; grid-template-columns: repeat(4, minmax(240px, 1fr)); gap: 24px; justify-content: center; }
+  .skills-card-grid { display: grid; grid-template-columns: repeat(var(--grid-cols, 4), minmax(0, 1fr)); gap: var(--grid-gap, 24px); justify-content: center; }
   /* About mini project cards */
-  .projects-mini-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; justify-content: center; }
+  .projects-mini-grid { display: grid; grid-template-columns: repeat(var(--grid-cols, 4), minmax(0, 1fr)); gap: var(--grid-gap, 24px); justify-content: center; }
 }
 
 /* Center items in partial rows by constraining max width and centering the grid */

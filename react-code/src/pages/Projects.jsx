@@ -50,7 +50,7 @@ function Projects() {
         <Section className="projects-gallery">
           <div className="container">
             <FilterTabs categories={allCategories} active={filter} onChange={setFilter} />
-            <div className="projects-grid">
+            <div className="projects-grid" style={{ "--grid-cols": 1 }}>
               {filteredProjects.map(project => (
                 <div className="project-card fadeIn" data-category={project.category} id={project.id} key={project.id}>
                   <div className="project-image">

@@ -62,7 +62,7 @@ function About() {
           <div className="container">
             <h2>Professional Experience</h2>
             <p className="section-intro">My career has spanned various roles that have shaped my approach to engineering and problem-solving.</p>
-            <div className="experience-grid exp-grid">
+            <div className="experience-grid exp-grid" style={{ "--grid-cols": 4 }}>
               <article className="experience-card exp-card fadeIn" tabIndex="0" aria-label="Airbus Engineer role">
                 <div className="exp-card__icon" aria-hidden="true"><i className="fas fa-plane"></i></div>
                 <h3 className="exp-card__title">Airbus Engineer</h3>
@@ -153,7 +153,7 @@ function About() {
               <div className="skills-cards">
                 <div className="skill-category">
                   <h3>Technical Expertise</h3>
-                  <div className="skills-card-grid">
+                  <div className="skills-card-grid" style={{ "--grid-cols": 4 }}>
                     {/* Engineering Design */}
                     <FlipCard
                       front={(
@@ -246,7 +246,7 @@ function About() {
                 </div>
                 <div className="skill-category">
                   <h3>Project & People Skills</h3>
-                  <div className="skills-card-grid">
+                  <div className="skills-card-grid" style={{ "--grid-cols": 4 }}>
                     {/* Leadership & Teamwork */}
                     <FlipCard
                       front={(
@@ -327,7 +327,7 @@ function About() {
               </div>
               <div className="certifications">
                 <h3>Certifications & Continuing Education</h3>
-                <div className="certification-cards">
+                <div className="certification-cards" style={{ "--grid-cols": 4 }}>
                   <div className="certification-card fadeIn">
                     <div className="certification-logo">
                       <img src="/api/placeholder/60/60" alt="Yale University logo" />
@@ -358,7 +358,7 @@ function About() {
         <Section className="projects-highlight">
           <div className="container">
             <h2>Featured Projects</h2>
-            <div className="projects-mini-grid">
+            <div className="projects-mini-grid" style={{ "--grid-cols": 4 }}>
               <div className="project-mini-card fadeIn">
                 <h3>Wire Fin Heat Exchanger Design</h3>
                 <p>Comprehensive analysis of heat transfer scenarios and economic optimization for novel heat exchanger design.</p>

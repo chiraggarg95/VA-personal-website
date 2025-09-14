@@ -1,8 +1,8 @@
 import React from "react";
 
-function CertificationsGrid() {
+function CertificationsGrid({ cols = 4 }) {
   return (
-    <div className="certifications-grid fadeIn">
+    <div className="certifications-grid fadeIn" style={{ "--grid-cols": cols }}>
       <div className="certification-badge">
         <div className="certification-logo"></div>
         <h4>Introduction to Psychology</h4>
