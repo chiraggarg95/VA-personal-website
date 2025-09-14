@@ -1,0 +1,433 @@
+import React, { useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
+import "../styles.css";
+import AboutPic from "../assets/about pic.jpg";
+
+import Meta from "../components/Meta";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import useDarkMode from "../utils/useDarkMode";
+
+function About() {
+  useDarkMode();
+  // Skill card flip logic
+  const handleSkillCardClick = useCallback((e) => {
+    const card = e.currentTarget;
+    card.classList.toggle("flipped");
+  }, []);
+
+  useEffect(() => {
+    // Sticky navbar
+    const handleScroll = () => {
+      const navbar = document.getElementById("navbar");
+      if (navbar) {
+        if (window.scrollY > 100) {
+          navbar.classList.add("sticky");
+        } else {
+          navbar.classList.remove("sticky");
+        }
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    // Mobile menu toggle
+    const mobileToggle = document.querySelector(".mobile-toggle");
+    const nav = document.querySelector("nav");
+    if (mobileToggle && nav) {
+      const toggleHandler = function () {
+        nav.classList.toggle("active");
+        this.classList.toggle("active");
+      };
+      mobileToggle.addEventListener("click", toggleHandler);
+      // Clean up
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        mobileToggle.removeEventListener("click", toggleHandler);
+      };
+    } else {
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    // Fade in animation for experience, education, certifications, and project cards
+    const fadeElements = document.querySelectorAll('.fadeIn');
+    const observer = new window.IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fadeIn');
+        }
+      });
+    }, { threshold: 0.1 });
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    return () => {
+      fadeElements.forEach(element => {
+        observer.unobserve(element);
+      });
+    };
+  }, []);
+
+  return (
+    <>
+      <Meta
+        title="About Me | Vaishnavi G Agarwal"
+        description="Learn about Vaishnavi G Agarwal's background as a Mechanical Engineer at Airbus and IIT Bombay with expertise in aerospace systems and cross-functional collaboration."
+        ogTitle="About Me | Vaishnavi G Agarwal"
+        ogDescription="Engineer with expertise in aerospace systems, satellite technology, and user-centered problem solving. Discover my journey from IIT Bombay to Airbus."
+        ogImage="/api/placeholder/1200/630"
+        ogUrl="https://vaishnaviagarwal.com/about"
+      />
+      <Header activePage="about" />
+
+      <main>
+        <section className="page-header">
+          <div className="container">
+            <h1>About Me</h1>
+            <p>Engineer with a passion for impactful solutions</p>
+          </div>
+        </section>
+
+        <section className="about-content">
+          <div className="container">
+            <div className="about-grid">
+              <div className="about-image">
+                <img src={AboutPic} alt="Vaishnavi G Agarwal professional headshot" />
+              </div>
+              <div className="about-bio">
+                <h2>My Journey</h2>
+                <p>With a Mechanical Engineering degree from IIT Bombay and current experience at Airbus in electrical systems integration, I've developed a strong foundation in complex problem-solving, cross-functional collaboration, and delivering real-world impact. My work at Airbus involves electrical system installation on CAF 929 Single Aisle CI, where precision and systems thinking are paramount.</p>
+                <p>My academic journey at IIT Bombay was enriched by hands-on experience with the Student Satellite Program, where I designed mechanical subsystems for the Star Tracker-based Attitude Determination System (STADS). This experience, combined with my roles as a Student Mentor and Department Academic Mentor, cultivated my ability to understand user needs and create solutions that balance technical constraints with practical implementation.</p>
+                <p>I'm drawn to work that sits at the intersection of engineering, design, and strategy. Whether I'm integrating electrical systems, designing satellite components, or developing user-friendly applications, I approach challenges with both analytical rigor and a keen focus on the end-user experience.</p>
+                <div className="core-values">
+                  <h3>Core Principles</h3>
+                  <ul>
+                    <li><strong>Technical Excellence with User Focus</strong> — Applying engineering precision while maintaining awareness of how solutions impact end users</li>
+                    <li><strong>Cross-Functional Collaboration</strong> — Experience working across disciplines at Airbus and in academic projects to deliver integrated solutions</li>
+                    <li><strong>Structured Problem-Solving</strong> — Breaking down complex challenges through methodical analysis and creative thinking</li>
+                    <li><strong>Continuous Learning</strong> — Actively expanding my skills through professional experience and online courses in psychology, algorithms, and programming</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="experience">
+          <div className="container">
+            <h2>Professional Experience</h2>
+            <p className="section-intro">My career has spanned various roles that have shaped my approach to engineering and problem-solving.</p>
+            <div className="experience-grid">
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-plane"></i></div>
+                <h3>Airbus Engineer</h3>
+                <p>Currently working as an Engineer at Airbus in Bengaluru, focusing on electrical system installation for aircraft. Previously served as Associate Engineer in Physical Design and Integration (PDI), working with CATIA and ESI tools on mission-critical systems.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-satellite"></i></div>
+                <h3>Satellite Systems</h3>
+                <p>Led the mechanical subsystem for Star Tracker-based Attitude Determination System (STADS) at IIT Bombay's Student Satellite Program. Also contributed to the Communication Subsystem team, designing experiments for ESO's PS2V Orbital Platform.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-tools"></i></div>
+                <h3>Technical Research</h3>
+                <p>Completed multiple research internships, including projects on resin vat design for high-speed 3D printing and harmonic drive testing. Designed and integrated models for complex components and recommended optimizations based on empirical analysis.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-users"></i></div>
+                <h3>Leadership Roles</h3>
+                <p>Served as Institute Student Mentor, Department Academic Mentor, and Cultural Secretary at IIT Bombay. Experience mentoring students, organizing events for 500+ participants, and managing teams to execute large-scale initiatives.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="education">
+          <div className="container">
+            <h2>Educational Background</h2>
+            <div className="education-timeline">
+              <div className="education-item fadeIn">
+                <div className="education-icon"><i className="fas fa-university"></i></div>
+                <div className="education-content">
+                  <h3>Bachelor of Technology - B.Tech, Mechanical Engineering</h3>
+                  <p className="institution">Indian Institute of Technology, Bombay</p>
+                  <p className="date">2019 - 2023</p>
+                  <p>Grade: 8.1/10 | B.Tech Project: 9/10</p>
+                  <ul className="education-activities">
+                    <li>Team member of Student Satellite Program, developing Communications and Mechanical sub-systems for space applications</li>
+                    <li>Member of National Cadet Corps, Ham Radio Club, and Suman Mashruwala Advanced Micro Engineering Lab</li>
+                    <li>Contributed to various Social Activities bodies, developing leadership and teamwork skills</li>
+                    <li>Actively participated in activities of Cultural Clubs, acquiring stage performance skills</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="education-item fadeIn">
+                <div className="education-icon"><i className="fas fa-school"></i></div>
+                <div className="education-content">
+                  <h3>Higher Secondary Education</h3>
+                  <p className="institution">Sri Chaitanya Junior College, Pune (Maharashtra HSC)</p>
+                  <p className="date">2017 - 2019</p>
+                  <p>Grade: 89.69%</p>
+                  <ul className="education-activities">
+                    <li>JEE Advance: 2250, JEE Mains: 3286</li>
+                    <li>MHCET: Rank 50 (in Maharashtra), Girl's rank: 6 (in Maharashtra)</li>
+                    <li>RMO: Rank 25 (in Maharshtra and Goa region)</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="education-item fadeIn">
+                <div className="education-icon"><i className="fas fa-book"></i></div>
+                <div className="education-content">
+                  <h3>Secondary Education</h3>
+                  <p className="institution">DAV Public School, Aundh, Pune (CBSE)</p>
+                  <p className="date">2011 - 2017</p>
+                  <p>Grade: 97.40% CGPA: 10.0 | Perfect scores in Mathematics and Sanskrit</p>
+                  <ul className="education-activities">
+                    <li>Two-time silver medalist in Inter-House Basketball</li>
+                    <li>Grade A in Elementary and Intermediate Drawing Examinations</li>
+                    <li>Active participation in Dance, Drama, and Art activities</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="skills-section">
+          <div className="container">
+            <h2>Skills & Capabilities</h2>
+            <div className="skills-content">
+              <div className="skills-cards">
+                <div className="skill-category">
+                  <h3>Technical Expertise</h3>
+                  <div className="skills-card-grid">
+                    {/* Engineering Design */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-drafting-compass"></i></div>
+                          <h4>Engineering Design</h4>
+                          <p className="skill-brief">CAD tools and design methodologies</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Engineering Design</h4>
+                          <ul className="skill-details-list">
+                            <li>CATIA and ESI for aircraft systems</li>
+                            <li>SOLIDWORKS for mechanical design</li>
+                            <li>PCB implementation strategy</li>
+                            <li>Structural analysis and optimization</li>
+                            <li>3D component modeling and assembly</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Software & Programming */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-code"></i></div>
+                          <h4>Software & Programming</h4>
+                          <p className="skill-brief">Development and algorithmic skills</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Software & Programming</h4>
+                          <ul className="skill-details-list">
+                            <li>Python for application development</li>
+                            <li>Flask web framework implementation</li>
+                            <li>Data structures and algorithms</li>
+                            <li>Speech synthesis frameworks</li>
+                            <li>Microcontroller programming</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Aerospace & Communications */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-satellite"></i></div>
+                          <h4>Aerospace & Communications</h4>
+                          <p className="skill-brief">Satellite systems and protocols</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Aerospace & Communications</h4>
+                          <ul className="skill-details-list">
+                            <li>Satellite communications (SATCOM)</li>
+                            <li>Aircraft electrical system installation</li>
+                            <li>Amateur radio operations</li>
+                            <li>UART and SPI protocols</li>
+                            <li>Signal processing and transmission</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Manufacturing & Prototyping */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-print"></i></div>
+                          <h4>Manufacturing & Prototyping</h4>
+                          <p className="skill-brief">3D printing and rapid prototyping</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Manufacturing & Prototyping</h4>
+                          <ul className="skill-details-list">
+                            <li>SLA-based 3D printing techniques</li>
+                            <li>Resin tank optimization</li>
+                            <li>Mechanical component fabrication</li>
+                            <li>Material selection and testing</li>
+                            <li>Assembly design and optimization</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="skill-category">
+                  <h3>Project & People Skills</h3>
+                  <div className="skills-card-grid">
+                    {/* Leadership & Teamwork */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-users"></i></div>
+                          <h4>Leadership & Teamwork</h4>
+                          <p className="skill-brief">Leading teams to success</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Leadership & Teamwork</h4>
+                          <ul className="skill-details-list">
+                            <li>Mentoring students and junior team members</li>
+                            <li>Cross-functional team coordination</li>
+                            <li>Event management for 500+ participants</li>
+                            <li>Leading technical initiatives</li>
+                            <li>Cultural and technical leadership</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Project Management */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-tasks"></i></div>
+                          <h4>Project Management</h4>
+                          <p className="skill-brief">Organizing and executing projects</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Project Management</h4>
+                          <ul className="skill-details-list">
+                            <li>Requirements analysis and documentation</li>
+                            <li>Stakeholder management and communication</li>
+                            <li>Timeline planning and execution</li>
+                            <li>Resource allocation and optimization</li>
+                            <li>Risk assessment and mitigation</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Communication */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-comment-dots"></i></div>
+                          <h4>Communication</h4>
+                          <p className="skill-brief">Clear and effective communication</p>
+                        </div>
+                        <div className="skill-card-back">
+                          <h4>Communication</h4>
+                          <ul className="skill-details-list"></ul>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Problem Solving */}
+                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
+                      <div className="skill-card-inner">
+                        <div className="skill-card-front">
+                          <div className="skill-icon"><i className="fas fa-lightbulb"></i></div>
+                          <h4>Problem Solving</h4>
+                          <p className="skill-brief">Analytical and creative solutions</p>
+                        </div>
+                        <div className="skill-card-back"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="certifications">
+                <h3>Certifications & Continuing Education</h3>
+                <div className="certification-cards">
+                  <div className="certification-card fadeIn">
+                    <div className="certification-logo">
+                      <img src="/api/placeholder/60/60" alt="Yale University logo" />
+                    </div>
+                    <div className="certification-details">
+                      <h4>Introduction to Psychology</h4>
+                      <p className="institution">Yale University</p>
+                      <p className="cert-description">Understanding human behavior and cognitive processes</p>
+                    </div>
+                  </div>
+                  <div className="certification-card fadeIn">
+                    <div className="certification-logo">
+                      <img src="/api/placeholder/60/60" alt="UC San Diego logo" />
+                    </div>
+                    <div className="certification-details"></div>
+                  </div>
+                  <div className="certification-card fadeIn">
+                    <div className="certification-logo"></div>
+                    <div className="certification-details"></div>
+                  </div>
+                  <div className="certification-card fadeIn"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="projects-highlight">
+          <div className="container">
+            <h2>Featured Projects</h2>
+            <div className="projects-mini-grid">
+              <div className="project-mini-card fadeIn">
+                <h3>Wire Fin Heat Exchanger Design</h3>
+                <p>Comprehensive analysis of heat transfer scenarios and economic optimization for novel heat exchanger design.</p>
+                <Link to="/projects#heat-exchanger" className="btn text-btn">Learn More <i className="fas fa-arrow-right"></i></Link>
+              </div>
+              <div className="project-mini-card fadeIn">
+                <h3>Morse to Synthesized Speech App</h3>
+                <p>Web application enabling aphonic individuals to communicate through morse code input converted to synthesized speech.</p>
+                <Link to="/projects#morse-speech" className="btn text-btn">Learn More <i className="fas fa-arrow-right"></i></Link>
+              </div>
+              <div className="project-mini-card fadeIn">
+                <h3>3D Printing Resin Vat Design</h3>
+                <p>Optimized resin tank design for high-speed SLA 3D printing with innovative solutions for common technical challenges.</p>
+                <Link to="/projects#resin-vat" className="btn text-btn">Learn More <i className="fas fa-arrow-right"></i></Link>
+              </div>
+            </div>
+            <div className="center-btn">
+              <Link to="/projects" className="btn secondary">View All Projects</Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="cta-section">
+          <div className="container">
+            <h2>Looking to Connect</h2>
+            <p>I'm interested in collaborative opportunities where I can apply my technical expertise and user-centered approach to solve challenging problems.</p>
+            <div className="cta-buttons">
+              <Link to="/projects" className="btn primary">Explore My Work</Link>
+              <Link to="/contact" className="btn secondary">Get In Touch</Link>
+            </div>
+          </div>
+        </section>
+      </main>
+
+  <Footer />
+    </>
+  );
+}
+
+export default About;
