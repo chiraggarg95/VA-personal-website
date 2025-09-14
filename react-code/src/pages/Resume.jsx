@@ -1,12 +1,16 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles.css";
 
 import Meta from "../components/Meta";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import PageHeader from "../components/layout/PageHeader";
+import useParallax from "../hooks/useParallax";
+import useIntersectionFade from "../hooks/useIntersectionFade";
 import useDarkMode from "../utils/useDarkMode";
+import Section from "../components/layout/Section";
 
 import MichiganLogo from "../assets/MichiganLogo.jfif";
 import YaleLogo from "../assets/YaleLogo.png";
@@ -15,95 +19,8 @@ import SanDiegoLogo from "../assets/SanDiegoLogo.png";
 function Resume() {
   useDarkMode();
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // Sticky navbar
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      if (navbar) {
-        if (window.scrollY > 100) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
-    const nav = document.querySelector("nav");
-    if (mobileToggle && nav) {
-      const toggleHandler = function () {
-        nav.classList.toggle("active");
-        this.classList.toggle("active");
-      };
-      mobileToggle.addEventListener("click", toggleHandler);
-      // Clean up
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        mobileToggle.removeEventListener("click", toggleHandler);
-      };
-    } else {
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    // Parallax effect
-    const parallaxLayers = document.querySelectorAll('.parallax-layer');
-    let ticking = false;
-    function updateParallax() {
-      const scrollY = window.scrollY;
-      parallaxLayers.forEach((layer, index) => {
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          const speed = index * 0.2;
-          const yOffset = scrollY * speed;
-          if (layer.classList.contains('parallax-layer-1')) {
-            layer.style.transform = `translateY(${yOffset * 0.4}px)`;
-          } else if (layer.classList.contains('parallax-layer-2')) {
-            layer.style.transform = `translateY(${yOffset * 0.25}px)`;
-          } else if (layer.classList.contains('parallax-layer-3')) {
-            layer.style.transform = `translateY(${yOffset * 0.1}px)`;
-          }
-        }
-      });
-      ticking = false;
-    }
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }
-    window.addEventListener('scroll', onScroll);
-    updateParallax();
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    // Fade in animation for resume items and certifications
-    const fadeElements = document.querySelectorAll('.resume-item, .certification-item');
-    const observer = new window.IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fadeIn');
-        }
-      });
-    }, { threshold: 0.1 });
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
-    return () => {
-      fadeElements.forEach(element => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
+  useParallax();
+  useIntersectionFade(['.resume-item', '.certification-item']);
 
   // For dark mode, assume global logic is handled elsewhere (e.g., useDarkMode hook)
 
@@ -120,17 +37,13 @@ function Resume() {
       <Header activePage="resume" />
 
       <main>
-        <section className="page-header parallax-wrapper">
-          <div className="parallax-layer parallax-layer-1 parallax-blueprint"></div>
-          <div className="parallax-layer parallax-layer-2"></div>
-          <div className="parallax-layer parallax-layer-3 parallax-roadmap"></div>
-          <div className="container">
-            <h1>Professional Experience</h1>
-            <p>My qualifications, skills, and career journey</p>
-          </div>
-        </section>
+        <PageHeader
+          title="Professional Experience"
+          subtitle="My qualifications, skills, and career journey"
+          parallax
+        />
 
-        <section className="resume-section">
+        <Section className="resume-section">
           <div className="container">
             <div className="resume-intro">
               <p>Mechanical Engineering graduate from IIT Bombay with experience at Airbus in electrical systems integration, combining technical expertise with cross-functional collaboration skills. Focused on creating user-centered solutions through systematic problem-solving and analytical rigor.</p>
@@ -409,9 +322,9 @@ function Resume() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="cta-section parallax-wrapper">
+        <Section className="cta-section parallax-wrapper">
           <div className="parallax-layer parallax-layer-1 parallax-dots"></div>
           <div className="parallax-layer parallax-layer-2"></div>
           <div className="parallax-layer parallax-layer-3 parallax-roadmap"></div>
@@ -420,7 +333,7 @@ function Resume() {
             <p>Let's connect and discuss how my technical expertise and analytical approach could benefit your team.</p>
             <Link to="/contact" className="btn primary">Get In Touch</Link>
           </div>
-        </section>
+        </Section>
       </main>
 
   <Footer />

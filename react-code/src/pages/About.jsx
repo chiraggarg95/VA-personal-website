@@ -1,75 +1,22 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles.css";
 import AboutPic from "../assets/about pic.jpg";
 
 import Meta from "../components/Meta";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import PageHeader from "../components/layout/PageHeader";
+import FlipCard from "../components/ui/FlipCard";
 import useDarkMode from "../utils/useDarkMode";
+import useIntersectionFade from "../hooks/useIntersectionFade";
+import Section from "../components/layout/Section";
+import EducationSection from "../components/education/EducationSection";
+import EducationItem from "../components/education/EducationItem";
 
 function About() {
   useDarkMode();
-  // Skill card flip logic
-  const handleSkillCardClick = useCallback((e) => {
-    const card = e.currentTarget;
-    card.classList.toggle("flipped");
-  }, []);
-
-  useEffect(() => {
-    // Sticky navbar
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      if (navbar) {
-        if (window.scrollY > 100) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
-    const nav = document.querySelector("nav");
-    if (mobileToggle && nav) {
-      const toggleHandler = function () {
-        nav.classList.toggle("active");
-        this.classList.toggle("active");
-      };
-      mobileToggle.addEventListener("click", toggleHandler);
-      // Clean up
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        mobileToggle.removeEventListener("click", toggleHandler);
-      };
-    } else {
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    // Fade in animation for experience, education, certifications, and project cards
-    const fadeElements = document.querySelectorAll('.fadeIn');
-    const observer = new window.IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fadeIn');
-        }
-      });
-    }, { threshold: 0.1 });
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
-    return () => {
-      fadeElements.forEach(element => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
+  useIntersectionFade(['.experience-item', '.education-item', '.certification-item', '.project-card', '.fadeIn']);
 
   return (
     <>
@@ -84,14 +31,9 @@ function About() {
       <Header activePage="about" />
 
       <main>
-        <section className="page-header">
-          <div className="container">
-            <h1>About Me</h1>
-            <p>Engineer with a passion for impactful solutions</p>
-          </div>
-        </section>
+        <PageHeader title="About Me" subtitle="Engineer with a passion for impactful solutions" />
 
-        <section className="about-content">
+        <Section className="about-content">
           <div className="container">
             <div className="about-grid">
               <div className="about-image">
@@ -114,105 +56,115 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="experience">
+        <Section className="experience exp-section">
           <div className="container">
             <h2>Professional Experience</h2>
             <p className="section-intro">My career has spanned various roles that have shaped my approach to engineering and problem-solving.</p>
-            <div className="experience-grid">
-              <div className="experience-card fadeIn">
-                <div className="experience-icon"><i className="fas fa-plane"></i></div>
-                <h3>Airbus Engineer</h3>
-                <p>Currently working as an Engineer at Airbus in Bengaluru, focusing on electrical system installation for aircraft. Previously served as Associate Engineer in Physical Design and Integration (PDI), working with CATIA and ESI tools on mission-critical systems.</p>
-              </div>
-              <div className="experience-card fadeIn">
-                <div className="experience-icon"><i className="fas fa-satellite"></i></div>
-                <h3>Satellite Systems</h3>
-                <p>Led the mechanical subsystem for Star Tracker-based Attitude Determination System (STADS) at IIT Bombay's Student Satellite Program. Also contributed to the Communication Subsystem team, designing experiments for ESO's PS2V Orbital Platform.</p>
-              </div>
-              <div className="experience-card fadeIn">
-                <div className="experience-icon"><i className="fas fa-tools"></i></div>
-                <h3>Technical Research</h3>
-                <p>Completed multiple research internships, including projects on resin vat design for high-speed 3D printing and harmonic drive testing. Designed and integrated models for complex components and recommended optimizations based on empirical analysis.</p>
-              </div>
-              <div className="experience-card fadeIn">
-                <div className="experience-icon"><i className="fas fa-users"></i></div>
-                <h3>Leadership Roles</h3>
-                <p>Served as Institute Student Mentor, Department Academic Mentor, and Cultural Secretary at IIT Bombay. Experience mentoring students, organizing events for 500+ participants, and managing teams to execute large-scale initiatives.</p>
-              </div>
+            <div className="experience-grid exp-grid" style={{ "--grid-cols": 4 }}>
+              <article className="experience-card exp-card fadeIn" tabIndex="0" aria-label="Airbus Engineer role">
+                <div className="exp-card__icon" aria-hidden="true"><i className="fas fa-plane"></i></div>
+                <h3 className="exp-card__title">Airbus Engineer</h3>
+                <div className="exp-card__meta" aria-hidden="true">
+                  <span className="tag">2023—Present</span>
+                  <span className="tag">Bengaluru</span>
+                </div>
+                <p className="exp-card__body">Currently working as an Engineer at Airbus in Bengaluru, focusing on electrical system installation for aircraft. Previously served as Associate Engineer in Physical Design and Integration (PDI), working with CATIA and ESI tools on mission-critical systems.</p>
+              </article>
+              <article className="experience-card exp-card fadeIn" tabIndex="0" aria-label="Satellite Systems experience">
+                <div className="exp-card__icon" aria-hidden="true"><i className="fas fa-satellite"></i></div>
+                <h3 className="exp-card__title">Satellite Systems</h3>
+                <div className="exp-card__meta" aria-hidden="true">
+                  <span className="tag">IIT Bombay</span>
+                  <span className="tag">Student Satellite Program</span>
+                </div>
+                <p className="exp-card__body">Led the mechanical subsystem for Star Tracker-based Attitude Determination System (STADS) at IIT Bombay's Student Satellite Program. Also contributed to the Communication Subsystem team, designing experiments for ESO's PS2V Orbital Platform.</p>
+              </article>
+              <article className="experience-card exp-card fadeIn" tabIndex="0" aria-label="Technical Research roles">
+                <div className="exp-card__icon" aria-hidden="true"><i className="fas fa-tools"></i></div>
+                <h3 className="exp-card__title">Technical Research</h3>
+                <div className="exp-card__meta" aria-hidden="true">
+                  <span className="tag">Research</span>
+                  <span className="tag">Prototyping</span>
+                </div>
+                <p className="exp-card__body">Completed multiple research internships, including projects on resin vat design for high-speed 3D printing and harmonic drive testing. Designed and integrated models for complex components and recommended optimizations based on empirical analysis.</p>
+              </article>
+              <article className="experience-card exp-card fadeIn" tabIndex="0" aria-label="Leadership roles">
+                <div className="exp-card__icon" aria-hidden="true"><i className="fas fa-users"></i></div>
+                <h3 className="exp-card__title">Leadership Roles</h3>
+                <div className="exp-card__meta" aria-hidden="true">
+                  <span className="tag">IIT Bombay</span>
+                  <span className="tag">Mentorship & Clubs</span>
+                </div>
+                <p className="exp-card__body">Served as Institute Student Mentor, Department Academic Mentor, and Cultural Secretary at IIT Bombay. Experience mentoring students, organizing events for 500+ participants, and managing teams to execute large-scale initiatives.</p>
+              </article>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="education">
-          <div className="container">
-            <h2>Educational Background</h2>
-            <div className="education-timeline">
-              <div className="education-item fadeIn">
-                <div className="education-icon"><i className="fas fa-university"></i></div>
-                <div className="education-content">
-                  <h3>Bachelor of Technology - B.Tech, Mechanical Engineering</h3>
-                  <p className="institution">Indian Institute of Technology, Bombay</p>
-                  <p className="date">2019 - 2023</p>
-                  <p>Grade: 8.1/10 | B.Tech Project: 9/10</p>
-                  <ul className="education-activities">
-                    <li>Team member of Student Satellite Program, developing Communications and Mechanical sub-systems for space applications</li>
-                    <li>Member of National Cadet Corps, Ham Radio Club, and Suman Mashruwala Advanced Micro Engineering Lab</li>
-                    <li>Contributed to various Social Activities bodies, developing leadership and teamwork skills</li>
-                    <li>Actively participated in activities of Cultural Clubs, acquiring stage performance skills</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="education-item fadeIn">
-                <div className="education-icon"><i className="fas fa-school"></i></div>
-                <div className="education-content">
-                  <h3>Higher Secondary Education</h3>
-                  <p className="institution">Sri Chaitanya Junior College, Pune (Maharashtra HSC)</p>
-                  <p className="date">2017 - 2019</p>
-                  <p>Grade: 89.69%</p>
-                  <ul className="education-activities">
-                    <li>JEE Advance: 2250, JEE Mains: 3286</li>
-                    <li>MHCET: Rank 50 (in Maharashtra), Girl's rank: 6 (in Maharashtra)</li>
-                    <li>RMO: Rank 25 (in Maharshtra and Goa region)</li>
-                  </ul>
-                </div>
-              </div>
-              <div className="education-item fadeIn">
-                <div className="education-icon"><i className="fas fa-book"></i></div>
-                <div className="education-content">
-                  <h3>Secondary Education</h3>
-                  <p className="institution">DAV Public School, Aundh, Pune (CBSE)</p>
-                  <p className="date">2011 - 2017</p>
-                  <p>Grade: 97.40% CGPA: 10.0 | Perfect scores in Mathematics and Sanskrit</p>
-                  <ul className="education-activities">
-                    <li>Two-time silver medalist in Inter-House Basketball</li>
-                    <li>Grade A in Elementary and Intermediate Drawing Examinations</li>
-                    <li>Active participation in Dance, Drama, and Art activities</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <EducationSection title="Educational Background">
+          <EducationItem
+            className="fadeIn"
+            icon={<i className="fas fa-university"></i>}
+            degree="Bachelor of Technology - B.Tech, Mechanical Engineering"
+            institution="Indian Institute of Technology, Bombay"
+            dates="2019 - 2023"
+            grade="8.1/10 | B.Tech Project: 9/10"
+            highlights={[
+              "Team member of Student Satellite Program, developing Communications and Mechanical sub-systems for space applications",
+              "Member of National Cadet Corps, Ham Radio Club, and Suman Mashruwala Advanced Micro Engineering Lab",
+              "Contributed to various Social Activities bodies, developing leadership and teamwork skills",
+              "Actively participated in activities of Cultural Clubs, acquiring stage performance skills",
+            ]}
+          />
+          <EducationItem
+            className="fadeIn"
+            icon={<i className="fas fa-school"></i>}
+            degree="Higher Secondary Education"
+            institution="Sri Chaitanya Junior College, Pune (Maharashtra HSC)"
+            dates="2017 - 2019"
+            grade="89.69%"
+            highlights={[
+              "JEE Advance: 2250, JEE Mains: 3286",
+              "MHCET: Rank 50 (in Maharashtra), Girl's rank: 6 (in Maharashtra)",
+              "RMO: Rank 25 (in Maharshtra and Goa region)",
+            ]}
+          />
+          <EducationItem
+            className="fadeIn"
+            icon={<i className="fas fa-book"></i>}
+            degree="Secondary Education"
+            institution="DAV Public School, Aundh, Pune (CBSE)"
+            dates="2011 - 2017"
+            grade="97.40% CGPA: 10.0 | Perfect scores in Mathematics and Sanskrit"
+            highlights={[
+              "Two-time silver medalist in Inter-House Basketball",
+              "Grade A in Elementary and Intermediate Drawing Examinations",
+              "Active participation in Dance, Drama, and Art activities",
+            ]}
+          />
+        </EducationSection>
 
-        <section className="skills-section">
+        <Section className="skills-section">
           <div className="container">
             <h2>Skills & Capabilities</h2>
             <div className="skills-content">
               <div className="skills-cards">
                 <div className="skill-category">
                   <h3>Technical Expertise</h3>
-                  <div className="skills-card-grid">
+                  <div className="skills-card-grid" style={{ "--grid-cols": 4 }}>
                     {/* Engineering Design */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-drafting-compass"></i></div>
                           <h4>Engineering Design</h4>
                           <p className="skill-brief">CAD tools and design methodologies</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Engineering Design</h4>
                           <ul className="skill-details-list">
                             <li>CATIA and ESI for aircraft systems</li>
@@ -221,18 +173,20 @@ function About() {
                             <li>Structural analysis and optimization</li>
                             <li>3D component modeling and assembly</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Software & Programming */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-code"></i></div>
                           <h4>Software & Programming</h4>
                           <p className="skill-brief">Development and algorithmic skills</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Software & Programming</h4>
                           <ul className="skill-details-list">
                             <li>Python for application development</li>
@@ -241,18 +195,20 @@ function About() {
                             <li>Speech synthesis frameworks</li>
                             <li>Microcontroller programming</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Aerospace & Communications */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-satellite"></i></div>
                           <h4>Aerospace & Communications</h4>
                           <p className="skill-brief">Satellite systems and protocols</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Aerospace & Communications</h4>
                           <ul className="skill-details-list">
                             <li>Satellite communications (SATCOM)</li>
@@ -261,18 +217,20 @@ function About() {
                             <li>UART and SPI protocols</li>
                             <li>Signal processing and transmission</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Manufacturing & Prototyping */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-print"></i></div>
                           <h4>Manufacturing & Prototyping</h4>
                           <p className="skill-brief">3D printing and rapid prototyping</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Manufacturing & Prototyping</h4>
                           <ul className="skill-details-list">
                             <li>SLA-based 3D printing techniques</li>
@@ -281,23 +239,25 @@ function About() {
                             <li>Material selection and testing</li>
                             <li>Assembly design and optimization</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                   </div>
                 </div>
                 <div className="skill-category">
                   <h3>Project & People Skills</h3>
-                  <div className="skills-card-grid">
+                  <div className="skills-card-grid" style={{ "--grid-cols": 4 }}>
                     {/* Leadership & Teamwork */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-users"></i></div>
                           <h4>Leadership & Teamwork</h4>
                           <p className="skill-brief">Leading teams to success</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Leadership & Teamwork</h4>
                           <ul className="skill-details-list">
                             <li>Mentoring students and junior team members</li>
@@ -306,18 +266,20 @@ function About() {
                             <li>Leading technical initiatives</li>
                             <li>Cultural and technical leadership</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Project Management */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-tasks"></i></div>
                           <h4>Project Management</h4>
                           <p className="skill-brief">Organizing and executing projects</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Project Management</h4>
                           <ul className="skill-details-list">
                             <li>Requirements analysis and documentation</li>
@@ -326,40 +288,46 @@ function About() {
                             <li>Resource allocation and optimization</li>
                             <li>Risk assessment and mitigation</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Communication */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-comment-dots"></i></div>
                           <h4>Communication</h4>
                           <p className="skill-brief">Clear and effective communication</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Communication</h4>
                           <ul className="skill-details-list"></ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Problem Solving */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-lightbulb"></i></div>
                           <h4>Problem Solving</h4>
                           <p className="skill-brief">Analytical and creative solutions</p>
-                        </div>
-                        <div className="skill-card-back"></div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                      back={(
+                        <>
+                          <h4>Problem Solving</h4>
+                        </>
+                      )}
+                    />
                   </div>
                 </div>
               </div>
               <div className="certifications">
                 <h3>Certifications & Continuing Education</h3>
-                <div className="certification-cards">
+                <div className="certification-cards" style={{ "--grid-cols": 4 }}>
                   <div className="certification-card fadeIn">
                     <div className="certification-logo">
                       <img src="/api/placeholder/60/60" alt="Yale University logo" />
@@ -385,12 +353,12 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="projects-highlight">
+        <Section className="projects-highlight">
           <div className="container">
             <h2>Featured Projects</h2>
-            <div className="projects-mini-grid">
+            <div className="projects-mini-grid" style={{ "--grid-cols": 4 }}>
               <div className="project-mini-card fadeIn">
                 <h3>Wire Fin Heat Exchanger Design</h3>
                 <p>Comprehensive analysis of heat transfer scenarios and economic optimization for novel heat exchanger design.</p>
@@ -411,9 +379,9 @@ function About() {
               <Link to="/projects" className="btn secondary">View All Projects</Link>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="cta-section">
+        <Section className="cta-section">
           <div className="container">
             <h2>Looking to Connect</h2>
             <p>I'm interested in collaborative opportunities where I can apply my technical expertise and user-centered approach to solve challenging problems.</p>
@@ -422,7 +390,7 @@ function About() {
               <Link to="/contact" className="btn secondary">Get In Touch</Link>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
   <Footer />

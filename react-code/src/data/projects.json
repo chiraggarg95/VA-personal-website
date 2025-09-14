@@ -1,0 +1,48 @@
+[
+  {
+    "id": "stads",
+    "category": "aerospace",
+    "image": "/api/placeholder/800/500",
+    "alt": "Star Tracker-based Attitude Determination System",
+    "title": "Star Tracker-based Attitude Determination System (STADS)",
+    "summary": "Led the mechanical subsystem design for a CubeSat-compatible star tracker system, optimizing for size reduction while ensuring structural integrity and precision pointing accuracy.",
+    "tags": ["Aerospace Engineering", "Mechanical Design", "CubeSat Systems", "Structural Analysis"],
+    "details": [
+      { "h3": "Project Overview", "p": "As part of IIT Bombay's Student Satellite Program, I spearheaded the mechanical design of the Star Tracker-based Attitude Determination System. This critical component enables precise spacecraft orientation control for mission-critical operations." },
+      { "h3": "Key Contributions", "ul": [] },
+      { "h3": "Technical Achievements", "p": "Successfully designed a robust mechanical system that meets stringent space-grade requirements while maintaining compatibility with standard CubeSat form factors. The design achieved optimal mass distribution and thermal management." },
+      { "h3": "Impact & Recognition", "p": "This project contributed to IIT Bombay's ongoing satellite missions and provided valuable experience in space systems engineering. The design principles developed are being applied to future satellite projects." }
+    ]
+  },
+  {
+    "id": "resin-vat",
+    "category": "mechanical research",
+    "image": "/api/placeholder/800/500",
+    "alt": "3D Printing Resin Vat Design",
+    "title": "High-Speed SLA 3D Printer Resin Vat System",
+    "summary": "Designed and optimized an innovative resin vat system for high-speed SLA 3D printing, solving critical challenges in beam intensity uniformity and material flow dynamics.",
+    "tags": ["3D Printing", "SOLIDWORKS", "Manufacturing", "Fluid Dynamics"],
+    "details": [
+      { "h3": "Project Challenge", "p": "High-speed micro-SLA 3D printing faced significant challenges with uneven laser intensity distribution and resin leakage, limiting print quality and production efficiency. Traditional vat designs couldn't handle the increased processing speeds." },
+      { "h3": "Innovation & Design", "ul": [] },
+      { "h3": "Technical Solutions", "p": "The innovative design addressed beam intensity variations through precision-engineered leveling mechanisms while the advanced sealing system eliminated material waste. The modular approach enabled rapid prototyping and testing iterations." },
+      { "h3": "Results & Impact", "p": "Achieved 90% improvement in beam intensity uniformity and eliminated resin leakage issues. The design enables consistent high-quality prints at increased processing speeds, contributing to more efficient additive manufacturing workflows." }
+    ]
+  },
+  {
+    "id": "morse-speech",
+    "category": "software",
+    "image": "/api/placeholder/800/500",
+    "alt": "Morse to Synthesized Speech Application",
+    "title": "Morse to Synthesized Speech Application",
+    "summary": "Developed an accessible web application that converts morse code input to synthesized speech, empowering aphonic individuals with an innovative communication tool.",
+    "tags": ["Python", "Flask", "Accessibility", "Speech Synthesis"],
+    "details": [
+      { "h3": "Social Impact Mission", "p": "This project addresses the communication challenges faced by aphonic individuals by providing an intuitive, technology-based solution that converts simple morse code inputs into clear synthesized speech." },
+      { "h3": "Technical Implementation", "ul": [] },
+      { "h3": "User-Centered Design", "p": "The application prioritizes ease of use with large, accessible buttons, clear visual feedback, and customizable speech parameters. The morse code system requires only simple space-bar interactions, making it accessible to users with varying physical capabilities." },
+      { "h3": "Technology Stack & Features", "p": "Built using Python Flask framework with advanced speech synthesis libraries. Features include adjustable speech speed, volume control, custom voice selection, and morse code pattern visualization for learning and verification." }
+    ]
+  }
+]
+

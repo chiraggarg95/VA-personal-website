@@ -1,16 +1,17 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../nav/Navbar";
+import MobileNav from "../nav/MobileNav";
+import useStickyNav from "../../hooks/useStickyNav";
+import useMobileNav from "../../hooks/useMobileNav";
 
 function Header({ activePage }) {
+  useStickyNav();
+  useMobileNav();
   return (
-    <header>
+    <header className="site-header">
       <div className="logo">VA</div>
       <Navbar activePage={activePage} />
-      <div className="mobile-toggle" aria-label="Toggle navigation menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <MobileNav />
       <div className="theme-switch-wrapper">
         <label className="theme-switch" htmlFor="checkbox">
           <input type="checkbox" id="checkbox" />
