@@ -23,6 +23,7 @@ function TestimonialsCarousel({ testimonials }) {
   return (
     <Carousel
       items={testimonials}
+      viewportClass="testimonials-viewport"
       renderItem={(t) => (
         <>
           <div className="testimonial-content">
