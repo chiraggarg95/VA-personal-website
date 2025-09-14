@@ -1,50 +1,18 @@
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles.css";
 import BisleriImg from "../assets/Bisleri.jfif";
 
 import Meta from "../components/Meta";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import PageHeader from "../components/layout/PageHeader";
+import Section from "../components/layout/Section";
 import useDarkMode from "../utils/useDarkMode";
 
 function Blog() {
   useDarkMode();
-  useEffect(() => {
-    // Sticky navbar
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      if (navbar) {
-        if (window.scrollY > 100) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
-    const nav = document.querySelector("nav");
-    if (mobileToggle && nav) {
-      const toggleHandler = function () {
-        nav.classList.toggle("active");
-        this.classList.toggle("active");
-      };
-      mobileToggle.addEventListener("click", toggleHandler);
-      // Clean up
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        mobileToggle.removeEventListener("click", toggleHandler);
-      };
-    } else {
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
 
   return (
     <>
@@ -59,14 +27,12 @@ function Blog() {
       <Header activePage="blog" />
 
       <main>
-        <section className="page-header">
-          <div className="container">
-            <h1>Engineering Insights</h1>
-            <p>Thoughts on engineering innovation, technology trends, and problem-solving approaches</p>
-          </div>
-        </section>
+        <PageHeader
+          title="Engineering Insights"
+          subtitle="Thoughts on engineering innovation, technology trends, and problem-solving approaches"
+        />
 
-        <section className="blog-content">
+        <Section className="blog-content">
           <div className="container">
             <div className="blog-single-layout">
               <article className="blog-post" id="post1">
@@ -116,7 +82,7 @@ function Blog() {
               </article>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
   <Footer />

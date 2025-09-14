@@ -1,47 +1,15 @@
-
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles.css";
 import Meta from "../components/Meta";
-import Header from "../components/Header";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import PageHeader from "../components/layout/PageHeader";
+import Section from "../components/layout/Section";
 import useDarkMode from "../utils/useDarkMode";
 
 function Contact() {
   useDarkMode();
-  useEffect(() => {
-    // Sticky navbar
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      if (navbar) {
-        if (window.scrollY > 100) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
-    const nav = document.querySelector("nav");
-    if (mobileToggle && nav) {
-      const toggleHandler = function () {
-        nav.classList.toggle("active");
-        this.classList.toggle("active");
-      };
-      mobileToggle.addEventListener("click", toggleHandler);
-      // Clean up
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        mobileToggle.removeEventListener("click", toggleHandler);
-      };
-    } else {
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
 
   return (
     <>
@@ -56,14 +24,12 @@ function Contact() {
       <Header activePage="contact" />
 
       <main>
-        <section className="page-header">
-          <div className="container">
-            <h1>Let's Connect</h1>
-            <p>I'm always open to discussing engineering projects, career opportunities, or new collaborations</p>
-          </div>
-        </section>
+        <PageHeader
+          title="Let's Connect"
+          subtitle="I'm always open to discussing engineering projects, career opportunities, or new collaborations"
+        />
 
-        <section className="contact-section">
+        <Section className="contact-section">
           <div className="container">
             <div className="contact-grid">
               <div className="contact-info">
@@ -140,9 +106,9 @@ function Contact() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="location-section">
+        <Section className="location-section">
           <div className="container">
             <h2>Based in Bengaluru</h2>
             <div className="location-content">
@@ -165,35 +131,10 @@ function Contact() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
-      <footer>
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-logo">VA</div>
-            <div className="footer-nav">
-              <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/about">About</Link></li>
-                <li><Link to="/projects">Projects</Link></li>
-                <li><Link to="/blog">Blog</Link></li>
-                <li><Link to="/resume">Résumé</Link></li>
-                <li><Link to="/contact">Contact</Link></li>
-              </ul>
-            </div>
-            <div className="social-links">
-              <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-              <a href="#" aria-label="GitHub"><i className="fab fa-github"></i></a>
-              <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Medium"><i className="fab fa-medium-m"></i></a>
-            </div>
-          </div>
-          <div className="copyright">
-            <p>&copy; 2025 Vaishnavi G Agarwal. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 }

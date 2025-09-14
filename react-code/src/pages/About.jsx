@@ -1,75 +1,19 @@
-import React, { useEffect, useCallback } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "../styles.css";
 import AboutPic from "../assets/about pic.jpg";
 
 import Meta from "../components/Meta";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
+import PageHeader from "../components/layout/PageHeader";
+import FlipCard from "../components/ui/FlipCard";
 import useDarkMode from "../utils/useDarkMode";
+import useIntersectionFade from "../hooks/useIntersectionFade";
 
 function About() {
   useDarkMode();
-  // Skill card flip logic
-  const handleSkillCardClick = useCallback((e) => {
-    const card = e.currentTarget;
-    card.classList.toggle("flipped");
-  }, []);
-
-  useEffect(() => {
-    // Sticky navbar
-    const handleScroll = () => {
-      const navbar = document.getElementById("navbar");
-      if (navbar) {
-        if (window.scrollY > 100) {
-          navbar.classList.add("sticky");
-        } else {
-          navbar.classList.remove("sticky");
-        }
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-
-    // Mobile menu toggle
-    const mobileToggle = document.querySelector(".mobile-toggle");
-    const nav = document.querySelector("nav");
-    if (mobileToggle && nav) {
-      const toggleHandler = function () {
-        nav.classList.toggle("active");
-        this.classList.toggle("active");
-      };
-      mobileToggle.addEventListener("click", toggleHandler);
-      // Clean up
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-        mobileToggle.removeEventListener("click", toggleHandler);
-      };
-    } else {
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }
-  }, []);
-
-  useEffect(() => {
-    // Fade in animation for experience, education, certifications, and project cards
-    const fadeElements = document.querySelectorAll('.fadeIn');
-    const observer = new window.IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fadeIn');
-        }
-      });
-    }, { threshold: 0.1 });
-    fadeElements.forEach(element => {
-      observer.observe(element);
-    });
-    return () => {
-      fadeElements.forEach(element => {
-        observer.unobserve(element);
-      });
-    };
-  }, []);
+  useIntersectionFade(['.experience-item', '.education-item', '.certification-item', '.project-card', '.fadeIn']);
 
   return (
     <>
@@ -84,14 +28,9 @@ function About() {
       <Header activePage="about" />
 
       <main>
-        <section className="page-header">
-          <div className="container">
-            <h1>About Me</h1>
-            <p>Engineer with a passion for impactful solutions</p>
-          </div>
-        </section>
+        <PageHeader title="About Me" subtitle="Engineer with a passion for impactful solutions" />
 
-        <section className="about-content">
+        <Section className="about-content">
           <div className="container">
             <div className="about-grid">
               <div className="about-image">
@@ -114,9 +53,9 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="experience">
+        <Section className="experience">
           <div className="container">
             <h2>Professional Experience</h2>
             <p className="section-intro">My career has spanned various roles that have shaped my approach to engineering and problem-solving.</p>
@@ -143,7 +82,7 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
         <section className="education">
           <div className="container">
@@ -196,7 +135,7 @@ function About() {
           </div>
         </section>
 
-        <section className="skills-section">
+        <Section className="skills-section">
           <div className="container">
             <h2>Skills & Capabilities</h2>
             <div className="skills-content">
@@ -205,14 +144,16 @@ function About() {
                   <h3>Technical Expertise</h3>
                   <div className="skills-card-grid">
                     {/* Engineering Design */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-drafting-compass"></i></div>
                           <h4>Engineering Design</h4>
                           <p className="skill-brief">CAD tools and design methodologies</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Engineering Design</h4>
                           <ul className="skill-details-list">
                             <li>CATIA and ESI for aircraft systems</li>
@@ -221,18 +162,20 @@ function About() {
                             <li>Structural analysis and optimization</li>
                             <li>3D component modeling and assembly</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Software & Programming */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-code"></i></div>
                           <h4>Software & Programming</h4>
                           <p className="skill-brief">Development and algorithmic skills</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Software & Programming</h4>
                           <ul className="skill-details-list">
                             <li>Python for application development</li>
@@ -241,18 +184,20 @@ function About() {
                             <li>Speech synthesis frameworks</li>
                             <li>Microcontroller programming</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Aerospace & Communications */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-satellite"></i></div>
                           <h4>Aerospace & Communications</h4>
                           <p className="skill-brief">Satellite systems and protocols</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Aerospace & Communications</h4>
                           <ul className="skill-details-list">
                             <li>Satellite communications (SATCOM)</li>
@@ -261,18 +206,20 @@ function About() {
                             <li>UART and SPI protocols</li>
                             <li>Signal processing and transmission</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Manufacturing & Prototyping */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-print"></i></div>
                           <h4>Manufacturing & Prototyping</h4>
                           <p className="skill-brief">3D printing and rapid prototyping</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Manufacturing & Prototyping</h4>
                           <ul className="skill-details-list">
                             <li>SLA-based 3D printing techniques</li>
@@ -281,23 +228,25 @@ function About() {
                             <li>Material selection and testing</li>
                             <li>Assembly design and optimization</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                   </div>
                 </div>
                 <div className="skill-category">
                   <h3>Project & People Skills</h3>
                   <div className="skills-card-grid">
                     {/* Leadership & Teamwork */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-users"></i></div>
                           <h4>Leadership & Teamwork</h4>
                           <p className="skill-brief">Leading teams to success</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Leadership & Teamwork</h4>
                           <ul className="skill-details-list">
                             <li>Mentoring students and junior team members</li>
@@ -306,18 +255,20 @@ function About() {
                             <li>Leading technical initiatives</li>
                             <li>Cultural and technical leadership</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Project Management */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-tasks"></i></div>
                           <h4>Project Management</h4>
                           <p className="skill-brief">Organizing and executing projects</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Project Management</h4>
                           <ul className="skill-details-list">
                             <li>Requirements analysis and documentation</li>
@@ -326,34 +277,40 @@ function About() {
                             <li>Resource allocation and optimization</li>
                             <li>Risk assessment and mitigation</li>
                           </ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Communication */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-comment-dots"></i></div>
                           <h4>Communication</h4>
                           <p className="skill-brief">Clear and effective communication</p>
-                        </div>
-                        <div className="skill-card-back">
+                        </>
+                      )}
+                      back={(
+                        <>
                           <h4>Communication</h4>
                           <ul className="skill-details-list"></ul>
-                        </div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                    />
                     {/* Problem Solving */}
-                    <div className="skill-card" tabIndex={0} onClick={handleSkillCardClick}>
-                      <div className="skill-card-inner">
-                        <div className="skill-card-front">
+                    <FlipCard
+                      front={(
+                        <>
                           <div className="skill-icon"><i className="fas fa-lightbulb"></i></div>
                           <h4>Problem Solving</h4>
                           <p className="skill-brief">Analytical and creative solutions</p>
-                        </div>
-                        <div className="skill-card-back"></div>
-                      </div>
-                    </div>
+                        </>
+                      )}
+                      back={(
+                        <>
+                          <h4>Problem Solving</h4>
+                        </>
+                      )}
+                    />
                   </div>
                 </div>
               </div>
@@ -385,9 +342,9 @@ function About() {
               </div>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="projects-highlight">
+        <Section className="projects-highlight">
           <div className="container">
             <h2>Featured Projects</h2>
             <div className="projects-mini-grid">
@@ -411,9 +368,9 @@ function About() {
               <Link to="/projects" className="btn secondary">View All Projects</Link>
             </div>
           </div>
-        </section>
+        </Section>
 
-        <section className="cta-section">
+        <Section className="cta-section">
           <div className="container">
             <h2>Looking to Connect</h2>
             <p>I'm interested in collaborative opportunities where I can apply my technical expertise and user-centered approach to solve challenging problems.</p>
@@ -422,7 +379,7 @@ function About() {
               <Link to="/contact" className="btn secondary">Get In Touch</Link>
             </div>
           </div>
-        </section>
+        </Section>
       </main>
 
   <Footer />
@@ -431,3 +388,4 @@ function About() {
 }
 
 export default About;
+import Section from "../components/layout/Section";
