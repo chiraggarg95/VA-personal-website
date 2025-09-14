@@ -9,7 +9,7 @@ import Section from "../components/layout/Section";
 import FilterTabs from "../components/ui/FilterTabs";
 import useDarkMode from "../utils/useDarkMode";
 import useIntersectionFade from "../hooks/useIntersectionFade";
-import projectData from "../data/projects.json";import SectionDivider from "../components/SectionDivider";
+import projectData from "../data/projects.json";
 
 const allCategories = [
   { label: "All Projects", value: "all" },

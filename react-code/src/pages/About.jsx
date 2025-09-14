@@ -60,50 +60,26 @@ function About() {
             <h2>Professional Experience</h2>
             <p className="section-intro">My career has spanned various roles that have shaped my approach to engineering and problem-solving.</p>
             <div className="experience-grid">
-              <FlipCard
-                canFlip={false}
-                className="experience-card fadeIn"
-                front={(
-                  <>
-                    <div className="experience-icon"><i className="fas fa-plane"></i></div>
-                    <h3>Airbus Engineer</h3>
-                    <p>Currently working as an Engineer at Airbus in Bengaluru, focusing on electrical system installation for aircraft. Previously served as Associate Engineer in Physical Design and Integration (PDI), working with CATIA and ESI tools on mission-critical systems.</p>
-                  </>
-                )}
-              />
-              <FlipCard
-                canFlip={false}
-                className="experience-card fadeIn"
-                front={(
-                  <>
-                    <div className="experience-icon"><i className="fas fa-satellite"></i></div>
-                    <h3>Satellite Systems</h3>
-                    <p>Led the mechanical subsystem for Star Tracker-based Attitude Determination System (STADS) at IIT Bombay's Student Satellite Program. Also contributed to the Communication Subsystem team, designing experiments for ESO's PS2V Orbital Platform.</p>
-                  </>
-                )}
-              />
-              <FlipCard
-                canFlip={false}
-                className="experience-card fadeIn"
-                front={(
-                  <>
-                    <div className="experience-icon"><i className="fas fa-tools"></i></div>
-                    <h3>Technical Research</h3>
-                    <p>Completed multiple research internships, including projects on resin vat design for high-speed 3D printing and harmonic drive testing. Designed and integrated models for complex components and recommended optimizations based on empirical analysis.</p>
-                  </>
-                )}
-              />
-              <FlipCard
-                canFlip={false}
-                className="experience-card fadeIn"
-                front={(
-                  <>
-                    <div className="experience-icon"><i className="fas fa-users"></i></div>
-                    <h3>Leadership Roles</h3>
-                    <p>Served as Institute Student Mentor, Department Academic Mentor, and Cultural Secretary at IIT Bombay. Experience mentoring students, organizing events for 500+ participants, and managing teams to execute large-scale initiatives.</p>
-                  </>
-                )}
-              />
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-plane"></i></div>
+                <h3>Airbus Engineer</h3>
+                <p>Currently working as an Engineer at Airbus in Bengaluru, focusing on electrical system installation for aircraft. Previously served as Associate Engineer in Physical Design and Integration (PDI), working with CATIA and ESI tools on mission-critical systems.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-satellite"></i></div>
+                <h3>Satellite Systems</h3>
+                <p>Led the mechanical subsystem for Star Tracker-based Attitude Determination System (STADS) at IIT Bombay's Student Satellite Program. Also contributed to the Communication Subsystem team, designing experiments for ESO's PS2V Orbital Platform.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-tools"></i></div>
+                <h3>Technical Research</h3>
+                <p>Completed multiple research internships, including projects on resin vat design for high-speed 3D printing and harmonic drive testing. Designed and integrated models for complex components and recommended optimizations based on empirical analysis.</p>
+              </div>
+              <div className="experience-card fadeIn">
+                <div className="experience-icon"><i className="fas fa-users"></i></div>
+                <h3>Leadership Roles</h3>
+                <p>Served as Institute Student Mentor, Department Academic Mentor, and Cultural Secretary at IIT Bombay. Experience mentoring students, organizing events for 500+ participants, and managing teams to execute large-scale initiatives.</p>
+              </div>
             </div>
           </div>
         </Section>
