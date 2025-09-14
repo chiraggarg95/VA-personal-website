@@ -3063,6 +3063,42 @@ footer {
   .skill-track { display: none; }
 }
 
+/* ===== FEATURED PROJECTS GRID (Home) ===== */
+.projects-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.fp-card {
+  position: relative;
+  border: 1px solid var(--border-100, var(--mid-gray));
+  background: var(--surface, var(--card-bg));
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  height: 100%;
+  max-height: 340px;
+}
+.fp-card:focus-within { outline: 2px solid var(--primary-color); outline-offset: 2px; }
+.fp-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,.1); border-color: color-mix(in oklab, var(--primary-color) 30%, transparent); }
+@media (prefers-reduced-motion: reduce) { .fp-card:hover { transform: none; } }
+.fp-card__link { position: absolute; inset: 0; z-index: 1; }
+.fp-media { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+.fp-media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform .25s ease; display: block; }
+.fp-card:hover .fp-media img { transform: scale(1.03); }
+.fp-media__overlay { position: absolute; inset: 0; background: linear-gradient( to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,.05) ); pointer-events: none; }
+.fp-body { padding: 16px 16px 14px; display: grid; gap: 8px; align-content: start; }
+.fp-title { font-size: clamp(1.05rem, 1.4vw, 1.15rem); line-height: 1.25; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fp-blurb { margin: 0; color: var(--dark-gray); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.fp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.fp-tag { padding: 2px 8px; border-radius: 999px; background: var(--bg-100, var(--light-gray)); color: var(--secondary-color); font-size: 12px; }
+.fp-tag--more { background: color-mix(in oklab, var(--primary-color) 12%, white); color: var(--primary-color); }
+.fp-cta { margin-top: 4px; }
+.fp-cta .btn { position: relative; z-index: 2; }
+
 /* ===== BLOG: ARTICLE LAYOUT ===== */
 .blog-content .blog-single-layout { display: flex; justify-content: center; }
 .blog-article { max-width: 900px; width: 100%; margin: 0 auto; }
