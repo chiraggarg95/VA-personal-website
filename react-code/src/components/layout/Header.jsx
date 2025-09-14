@@ -8,7 +8,7 @@ function Header({ activePage }) {
   useStickyNav();
   useMobileNav();
   return (
-    <header>
+    <header className="site-header">
       <div className="logo">VA</div>
       <Navbar activePage={activePage} />
       <MobileNav />

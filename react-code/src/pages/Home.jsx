@@ -8,7 +8,8 @@ import SectionDivider from "../components/SectionDivider";
 import IntroGrid from "../components/IntroGrid";
 import ProjectsPreview from "../components/ProjectsPreview";
 import ExperienceCards from "../components/ExperienceCards";
-import SkillsColumns from "../components/SkillsColumns";
+// import SkillsColumns from "../components/SkillsColumns";
+import SkillsSection from "../components/skills/SkillsSection";
 import CertificationsGrid from "../components/CertificationsGrid";
 import Footer from "../components/layout/Footer";
 import TestimonialsCarousel, { testimonials } from "../components/home/TestimonialsCarousel";
@@ -92,14 +93,7 @@ function Home() {
         </Section>
 
         {/* Skills Section */}
-        <Section className="skills-section">
-          <div className="container">
-            <h2>Core Competencies</h2>
-            <div className="skills-container">
-              <SkillsColumns />
-            </div>
-          </div>
-        </Section>
+        <SkillsSection />
 
         {/* Testimonials Section */}
         <Section className="testimonials">
